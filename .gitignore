@@ -96,4 +96,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+CMakeList.txt
 >>>>>>> aee70ba0a8e46a358c66d44e1206c42bc520b688
