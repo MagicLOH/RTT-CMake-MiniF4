@@ -17,10 +17,6 @@ RT-Thread 驱动更多板载资源。
 
 stm32f411-weact-MiniF4 是 WeAct 推出的一款基于 ARM Cortex-M4 内核的开发板，最高主频为 100Mhz，该开发板芯片为 STM32F411CE。
 
-开发板外观如下图所示：
-
-![board](figures/board.png)
-
 该开发板常用 **板载资源** 如下：
 
 - MCU：STM32F411CEU，主频 100MHz，512KB FLASH ，128KB RAM。
@@ -83,8 +79,8 @@ COM 端口默认连接串口 1，在终端工具里打开相应的串口（11520
 ```bash
  \ | /
 - RT -     Thread Operating System
- / | \     4.0.3 build Feb 27 2020
- 2006 - 2020 Copyright by rt-thread team
+ / | \     4.1.1 build May 01 2023 00:00:00
+ 2006 - 2022 Copyright by rt-thread team
 msh >
 ```
 
