@@ -9,6 +9,31 @@ config SOC_STM32F411CE
 
 menu "Onboard Peripheral Drivers"
 
+	config BSP_USING_SPI_FLASH
+        bool "Enable SPI FLASH (W25Q64 spi1)"
+        select BSP_USING_SPI
+        select BSP_USING_SPI1
+        select RT_USING_SFUD
+        select RT_SFUD_USING_SFDP
+        default n
+		
+	config BSP_USING_FAL
+        bool "Enable FAL (enable on-chip flash and spi1 flash)"
+        select BSP_USING_SPI_FLASH
+        select BSP_USING_ON_CHIP_FLASH
+        select RT_USING_FAL
+        select FAL_DEBUG_CONFIG
+        select FAL_PART_HAS_TABLE_CFG
+        select FAL_USING_SFUD_PORT
+		default n
+		
+	if BSP_USING_FAL
+		menuconfig BSP_USING_BOOTLOADER
+		bool "Enable bootloader partition table"
+		default n
+	endif
+		
+
 endmenu
 
 menu "On-chip Peripheral Drivers"
@@ -30,6 +55,31 @@ menu "On-chip Peripheral Drivers"
             config BSP_UART1_RX_USING_DMA
                 bool "Enable UART1 RX DMA"
                 depends on BSP_USING_UART1 && RT_SERIAL_USING_DMA
+                default n
+        endif
+		
+	config BSP_USING_ON_CHIP_FLASH
+        bool "Enable on-chip FLASH"
+        default n
+		
+	menuconfig BSP_USING_SPI
+        bool "Enable SPI BUS"
+        default n
+        select RT_USING_SPI
+        if BSP_USING_SPI
+            config BSP_USING_SPI1
+                bool "Enable SPI1 BUS"
+                default n
+
+            config BSP_SPI1_TX_USING_DMA
+                bool "Enable SPI1 TX DMA"
+                depends on BSP_USING_SPI1
+                default n
+                
+            config BSP_SPI1_RX_USING_DMA
+                bool "Enable SPI1 RX DMA"
+                depends on BSP_USING_SPI1
+                select BSP_SPI1_TX_USING_DMA
                 default n
         endif
         
