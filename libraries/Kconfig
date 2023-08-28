@@ -1,89 +1,103 @@
 config SOC_FAMILY_STM32
     bool
 
-config SOC_SERIES_STM32F0
-    bool
-    select ARCH_ARM_CORTEX_M0
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32F1
-    bool
-    select ARCH_ARM_CORTEX_M3
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32F2
-    bool
-    select ARCH_ARM_CORTEX_M3
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32F3
-    bool
-    select ARCH_ARM_CORTEX_M4
-    select SOC_FAMILY_STM32
-    
 config SOC_SERIES_STM32F4
     bool
     select ARCH_ARM_CORTEX_M4
     select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32F7
-    bool
-    select ARCH_ARM_CORTEX_M7
-    select SOC_FAMILY_STM32
     
-config SOC_SERIES_STM32L0
+menu "Hardware Drivers Config"
+
+config SOC_STM32F411CE
     bool
-    select ARCH_ARM_CORTEX_M0
-    select SOC_FAMILY_STM32
+    select SOC_SERIES_STM32F4
+    select RT_USING_COMPONENTS_INIT
+    select RT_USING_USER_MAIN
+    default y
+
+menu "Onboard Peripheral Drivers"
+
+	config BSP_USING_SPI_FLASH
+        bool "Enable SPI FLASH (W25Q64 spi1)"
+        select BSP_USING_SPI
+        select BSP_USING_SPI1
+        select RT_USING_SFUD
+        select RT_SFUD_USING_SFDP
+        default n
+		
+	config BSP_USING_FAL
+        bool "Enable FAL (enable on-chip flash and spi1 flash)"
+        select BSP_USING_SPI_FLASH
+        select BSP_USING_ON_CHIP_FLASH
+        select RT_USING_FAL
+        select FAL_DEBUG_CONFIG
+        select FAL_PART_HAS_TABLE_CFG
+        select FAL_USING_SFUD_PORT
+		default n
+		
+	if BSP_USING_FAL
+		menuconfig BSP_USING_BOOTLOADER
+		bool "Enable bootloader partition table"
+		default n
+	endif
+		
+
+endmenu
+
+menu "On-chip Peripheral Drivers"
+
+    config BSP_USING_GPIO
+        bool "Enable GPIO"
+        select RT_USING_PIN
+        default y
+
+    menuconfig BSP_USING_UART
+        bool "Enable UART"
+        default y
+        select RT_USING_SERIAL
+        if BSP_USING_UART
+            config BSP_USING_UART1
+                bool "Enable UART1"
+                default y
+
+            config BSP_UART1_RX_USING_DMA
+                bool "Enable UART1 RX DMA"
+                depends on BSP_USING_UART1 && RT_SERIAL_USING_DMA
+                default n
+        endif
+		
+	config BSP_USING_ON_CHIP_FLASH
+        bool "Enable on-chip FLASH"
+        default n
+		
+	menuconfig BSP_USING_SPI
+        bool "Enable SPI BUS"
+        default n
+        select RT_USING_SPI
+        if BSP_USING_SPI
+            config BSP_USING_SPI1
+                bool "Enable SPI1 BUS"
+                default n
+
+            config BSP_SPI1_TX_USING_DMA
+                bool "Enable SPI1 TX DMA"
+                depends on BSP_USING_SPI1
+                default n
+                
+            config BSP_SPI1_RX_USING_DMA
+                bool "Enable SPI1 RX DMA"
+                depends on BSP_USING_SPI1
+                select BSP_SPI1_TX_USING_DMA
+                default n
+        endif
+        
+    source "libraries/HAL_Drivers/Kconfig"    
     
-config SOC_SERIES_STM32L1
-    bool
-    select ARCH_ARM_CORTEX_M3
-    select SOC_FAMILY_STM32
+endmenu
 
-config SOC_SERIES_STM32L4
-    bool
-    select ARCH_ARM_CORTEX_M4
-    select SOC_FAMILY_STM32
+menu "Board extended module Drivers"
 
-config SOC_SERIES_STM32L5
-    bool
-    select ARCH_ARM_CORTEX_M33
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32G0
-    bool
-    select ARCH_ARM_CORTEX_M0
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32G4
-    bool
-    select ARCH_ARM_CORTEX_M4
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32H7
-    bool
-    select ARCH_ARM_CORTEX_M7
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32U5
-    bool
-    select ARCH_ARM_CORTEX_M33
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32MP1
-    bool
-    select ARCH_ARM_CORTEX_M4
-    select SOC_FAMILY_STM32
-
-config SOC_SERIES_STM32WL
-    bool
-    select ARCH_ARM_CORTEX_M4
-    select SOC_FAMILY_STM32
-    
-config SOC_SERIES_STM32WB
-    bool
-    select ARCH_ARM_CORTEX_M4
-    select SOC_FAMILY_STM32
-    
+endmenu
+ 
+endmenu
 

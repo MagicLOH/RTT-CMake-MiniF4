@@ -17,6 +17,9 @@
 #define RT_USING_IDLE_HOOK
 #define RT_IDLE_HOOK_LIST_SIZE 4
 #define IDLE_THREAD_STACK_SIZE 256
+#define RT_USING_TIMER_SOFT
+#define RT_TIMER_THREAD_PRIO 4
+#define RT_TIMER_THREAD_STACK_SIZE 512
 
 /* kservice optimization */
 
@@ -84,6 +87,8 @@
 #define RT_USING_SERIAL_V1
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_I2C
+#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_SPI
 #define RT_USING_SFUD
@@ -106,14 +111,12 @@
 
 /* Socket is in the 'Network' category */
 
+#define RT_USING_CPLUSPLUS
 
 /* Network */
 
 
 /* Utilities */
-
-
-/* RT-Thread Utestcases */
 
 
 /* RT-Thread online packages */

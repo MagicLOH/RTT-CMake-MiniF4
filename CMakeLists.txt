@@ -28,6 +28,7 @@ INCLUDE_DIRECTORIES(
 	.
 	rt-thread/components/libc/compilers/common/include
 	rt-thread/components/libc/compilers/newlib
+	rt-thread/components/libc/cplusplus
 	rt-thread/libcpu/arm/common
 	rt-thread/libcpu/arm/cortex-m4
 	rt-thread/components/drivers/include
@@ -72,11 +73,19 @@ SET(PROJECT_SOURCES
 	rt-thread/components/libc/compilers/common/ctime.c
 	rt-thread/components/libc/compilers/common/cwchar.c
 	rt-thread/components/libc/compilers/newlib/syscalls.c
+	rt-thread/components/libc/cplusplus/cxx_crt.cpp
+	rt-thread/components/libc/cplusplus/cxx_Mutex.cpp
+	rt-thread/components/libc/cplusplus/cxx_Semaphore.cpp
+	rt-thread/components/libc/cplusplus/cxx_crt_init.c
+	rt-thread/components/libc/cplusplus/cxx_Thread.cpp
 	rt-thread/libcpu/arm/common/backtrace.c
 	rt-thread/libcpu/arm/common/div0.c
 	rt-thread/libcpu/arm/common/showmem.c
 	rt-thread/libcpu/arm/cortex-m4/context_gcc.S
 	rt-thread/libcpu/arm/cortex-m4/cpuport.c
+	rt-thread/components/drivers/i2c/i2c-bit-ops.c
+	rt-thread/components/drivers/i2c/i2c_core.c
+	rt-thread/components/drivers/i2c/i2c_dev.c
 	rt-thread/components/drivers/ipc/completion.c
 	rt-thread/components/drivers/ipc/dataqueue.c
 	rt-thread/components/drivers/ipc/pipe.c
@@ -107,11 +116,11 @@ SET(PROJECT_SOURCES
 	libraries/HAL_Drivers/drv_spi.c
 	libraries/HAL_Drivers/drv_usart.c
 	libraries/HAL_Drivers/drv_usart.c
-	rt-thread/components/fal/src/fal_rtt.c
-	rt-thread/components/fal/src/fal_flash.c
 	rt-thread/components/fal/src/fal_partition.c
+	rt-thread/components/fal/src/fal_rtt.c
 	rt-thread/components/fal/samples/porting/fal_flash_sfud_port.c
 	rt-thread/components/fal/src/fal.c
+	rt-thread/components/fal/src/fal_flash.c
 	rt-thread/components/finsh/shell.c
 	rt-thread/components/finsh/msh.c
 	rt-thread/components/finsh/msh_parse.c
@@ -155,6 +164,10 @@ SET(PROJECT_SOURCES
 	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c
 	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
 	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
+	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
+	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c
+	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
+	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
 	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
 	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
 	libraries/STM32F4xx_HAL/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c

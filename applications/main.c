@@ -1,11 +1,10 @@
 /*
- * Copyright (c) 2006-2023, RT-Thread Development Team
- *
- * SPDX-License-Identifier: Apache-2.0
+ * @ProjectName:  MiniF411
+ * @FileName:     main.c
  *
  * Change Logs:
  * Date           Author       Notes
- * 2022-07-10     MagicLOH     Version 0.1
+ * 2023-07-02     MagicLOH     Version 0.1
  */
 
 #include <rtthread.h>
@@ -24,9 +23,9 @@ int main(void)
     while (count++)
     {
         rt_pin_write(LED0_PIN, PIN_HIGH);
-        rt_thread_mdelay(200);
+        rt_thread_mdelay(333);
         rt_pin_write(LED0_PIN, PIN_LOW);
-        rt_thread_mdelay(200);
+        rt_thread_mdelay(333);
     }
 
     return 0;

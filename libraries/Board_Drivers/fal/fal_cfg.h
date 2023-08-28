@@ -1,5 +1,14 @@
-#ifndef _FAL_CFG_H_
-#define _FAL_CFG_H_
+/*
+ * @ProjectName:  MiniF411
+ * @FileName:     fal_cfg.h
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2022-07-10     MagicLOH     Version 0.1
+ */
+
+#ifndef __FAL_CFG_H_
+#define __FAL_CFG_H_
 
 #include <rtthread.h>
 #include <board.h>
@@ -20,10 +29,11 @@ extern const struct fal_flash_dev stm32_onchip_flash_128k;
 extern struct fal_flash_dev w25q64; // from fal_spi_flash_sfud_port.c
 /* flash device table */
 #if defined(BSP_USING_BOOTLOADER)
-#define FAL_FLASH_DEV_TABLE                                          \
-{                                                                    \
-    &stm32_onchip_flash_128k,                                        \
-    &w25q64                                                          \
+#define FAL_FLASH_DEV_TABLE     \
+{                               \
+    &stm32_onchip_flash_16k,    \
+    &stm32_onchip_flash_64k,    \
+    &stm32_onchip_flash_128k,   \
 }
 #else
 #define FAL_FLASH_DEV_TABLE     \
@@ -41,13 +51,9 @@ extern struct fal_flash_dev w25q64; // from fal_spi_flash_sfud_port.c
 #if defined(BSP_USING_BOOTLOADER)
 #define FAL_PART_TABLE                                                                                               \
 {                                                                                                                    \
-    {FAL_PART_MAGIC_WROD, "bootloader", "onchip_flash_128k",                             0,       128 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD,        "app", "onchip_flash_128k",                    128 * 1024,       384 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD,  "easyflash",    "W25Q64",                                    0,       512 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD,   "download",    "W25Q64",                           512 * 1024,      1024 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD, "wifi_image",    "W25Q64",                  (512 + 1024) * 1024,       512 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD,       "font",    "W25Q64",            (512 + 1024 + 512) * 1024,  3 * 1024 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD, "filesystem",    "W25Q64", (512 + 1024 + 512 + 3 * 1024) * 1024,  3 * 1024 * 1024, 0}, \
+    {FAL_PART_MAGIC_WROD, "bootloader", "onchip_flash_16k",  0 , FLASH_SIZE_GRANULARITY_16K , 0}, \
+    {FAL_PART_MAGIC_WROD,      "param", "onchip_flash_64k",  0 , FLASH_SIZE_GRANULARITY_64K , 0}, \
+    {FAL_PART_MAGIC_WROD,        "app", "onchip_flash_128k", 0 , FLASH_SIZE_GRANULARITY_128K, 0}, \
 }
 #else
 #define FAL_PART_TABLE                                                                                               \
