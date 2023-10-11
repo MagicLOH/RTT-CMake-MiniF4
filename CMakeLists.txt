@@ -6,18 +6,18 @@ SET(CMAKE_SYSTEM_PROCESSOR cortex-m4)
 
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-SET(CMAKE_C_COMPILER "E:/__ToolsOfEmbeded_/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-gcc.exe")
-SET(CMAKE_ASM_COMPILER "E:/__ToolsOfEmbeded_/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-gcc.exe")
+SET(CMAKE_C_COMPILER "E:/_Tools/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-gcc.exe")
+SET(CMAKE_ASM_COMPILER "E:/_Tools/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-gcc.exe")
 SET(CMAKE_C_FLAGS " -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -ffunction-sections -fdata-sections -Dgcc -O0 -gdwarf-2 -g")
 SET(CMAKE_ASM_FLAGS " -c -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -ffunction-sections -fdata-sections -x assembler-with-cpp -Wa,-mimplicit-it=thumb  -gdwarf-2")
 SET(CMAKE_C_COMPILER_WORKS TRUE)
 
-SET(CMAKE_CXX_COMPILER "E:/__ToolsOfEmbeded_/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-g++.exe")
+SET(CMAKE_CXX_COMPILER "E:/_Tools/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-g++.exe")
 SET(CMAKE_CXX_FLAGS " -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -ffunction-sections -fdata-sections -Dgcc -O0 -gdwarf-2 -g")
 SET(CMAKE_CXX_COMPILER_WORKS TRUE)
 
-SET(CMAKE_OBJCOPY "E:/__ToolsOfEmbeded_/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-objcopy.exe")
-SET(CMAKE_SIZE "E:/__ToolsOfEmbeded_/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-size.exe")
+SET(CMAKE_OBJCOPY "E:/_Tools/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-objcopy.exe")
+SET(CMAKE_SIZE "E:/_Tools/env-windows-v1.3.5/tools/ConEmu/ConEmu/../../../tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-size.exe")
 
 SET(CMAKE_EXE_LINKER_FLAGS " -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -ffunction-sections -fdata-sections -Wl,--gc-sections,-Map=rt-thread.map,-cref,-u,Reset_Handler -T ${CMAKE_SOURCE_DIR}/board/linker_scripts/link.lds")
 
@@ -73,11 +73,11 @@ SET(PROJECT_SOURCES
 	rt-thread/components/libc/compilers/common/ctime.c
 	rt-thread/components/libc/compilers/common/cwchar.c
 	rt-thread/components/libc/compilers/newlib/syscalls.c
-	rt-thread/components/libc/cplusplus/cxx_crt.cpp
-	rt-thread/components/libc/cplusplus/cxx_Mutex.cpp
 	rt-thread/components/libc/cplusplus/cxx_Semaphore.cpp
-	rt-thread/components/libc/cplusplus/cxx_crt_init.c
 	rt-thread/components/libc/cplusplus/cxx_Thread.cpp
+	rt-thread/components/libc/cplusplus/cxx_Mutex.cpp
+	rt-thread/components/libc/cplusplus/cxx_crt_init.c
+	rt-thread/components/libc/cplusplus/cxx_crt.cpp
 	rt-thread/libcpu/arm/common/backtrace.c
 	rt-thread/libcpu/arm/common/div0.c
 	rt-thread/libcpu/arm/common/showmem.c
@@ -116,11 +116,11 @@ SET(PROJECT_SOURCES
 	libraries/HAL_Drivers/drv_spi.c
 	libraries/HAL_Drivers/drv_usart.c
 	libraries/HAL_Drivers/drv_usart.c
-	rt-thread/components/fal/src/fal_partition.c
-	rt-thread/components/fal/src/fal_rtt.c
-	rt-thread/components/fal/samples/porting/fal_flash_sfud_port.c
-	rt-thread/components/fal/src/fal.c
 	rt-thread/components/fal/src/fal_flash.c
+	rt-thread/components/fal/src/fal_rtt.c
+	rt-thread/components/fal/src/fal_partition.c
+	rt-thread/components/fal/src/fal.c
+	rt-thread/components/fal/samples/porting/fal_flash_sfud_port.c
 	rt-thread/components/finsh/shell.c
 	rt-thread/components/finsh/msh.c
 	rt-thread/components/finsh/msh_parse.c

@@ -1,4 +1,4 @@
-# stm32f411-weact-MiniF4 开发板 BSP 说明
+# stm32f411-weact-MiniF4开发板 BSP 说明
 
 ## 简介
 
@@ -32,43 +32,22 @@ stm32f411-weact-MiniF4 是 WeAct 推出的一款基于 ARM Cortex-M4 内核的�
 
 本 BSP 目前对外设的支持情况如下：
 
-| **片上外设**   | **支持情况** |                        **备注**                        |
-|:-----------|:--------:|:----------------------------------------------------:|
-| GPIO       |    支持    |         PA0, PA1... PH1 ---> PIN: 0, 1...47          |
-| UART       |    支持    |                        UART1                         |
-| SPI        |    支持    |                                                      |
-| IIC        |    支持    |                                                      |
-| RTC        |    支持    |                    支持外部晶振和内部低速时钟                     |
-| WDT        |    支持    |                                                      |
-| FLASH      |    支持    | 已适配 [FAL](https://github.com/RT-Thread-packages/fal) |
-| USB Device |    支持    |                                                      |
+| **片上外设** | **支持情况** |                        **备注**                         |
+| :----------- | :----------: | :-----------------------------------------------------: |
+| GPIO         |     支持     |           PA0, PA1... PH1 ---> PIN: 0, 1...47           |
+| UART         |     支持     |                          UART1                          |
+| SPI          |     支持     |                                                         |
+| IIC          |     支持     |                                                         |
+| RTC          |     支持     |               支持外部晶振和内部低速时钟                |
+| WDT          |     支持     |                                                         |
+| FLASH        |     支持     | 已适配 [FAL](https://github.com/RT-Thread-packages/fal) |
+| USB Device   |     支持     |                                                         |
 
 ## 使用说明
-
-使用说明分为如下两个章节：
-
-- 快速上手
-
-  本章节是为刚接触 RT-Thread 的新手准备的使用说明，遵循简单的步骤即可将 RT-Thread 操作系统运行在该开发板上，看到实验效果 。
-
-- 进阶使用
-
-  本章节是为需要在 RT-Thread 操作系统上使用更多开发板资源的开发者准备的。通过使用 ENV 工具对 BSP
-  进行配置，可以开启更多板载资源，实现更多高级功能。
-
-### 快速上手
-
-本 BSP 为开发者提供 MDK5 和 IAR 工程，并且支持 GCC 开发环境。下面以 MDK5 开发环境为例，介绍如何将系统运行起来。
 
 #### 硬件连接
 
 使用 Type-A to Type-C 线连接开发板和 PC 供电，红色 LED LD2 (PWR) 会点亮。
-
-#### 编译下载
-
-双击 project.uvprojx 文件，打开 MDK5 工程，编译并下载程序到开发板。
-
-> 工程默认配置使用 DAP-LINK 下载程序，点击下载按钮即可下载程序到开发板。
 
 #### 运行结果
 
@@ -94,17 +73,16 @@ msh >
 
 3. 输入 `pkgs --update` 命令更新软件包。
 
-4. 输入 `scons --target=mdk4/mdk5/iar` 命令重新生成工程。
+4. 输入 `scons --target=cmake` 命令重新生成工程。
 
 本章节更多详细的介绍请参考 [STM32 系列 BSP 外设驱动使用教程](../docs/STM32 系列 BSP 外设驱动使用教程. md)。
 
 ## 注意事项
 
-暂无
+本工程是作者学习工程，没有MDK5模板，需自行制作BSP
 
 ## 联系人信息
 
 维护人:
 
 - [MagicLOH](https://github.com/MagicLOH) ，邮箱：<toyzloh@foxmail.com>
-- [greedyhao](https://github.com/greedyhao) ，邮箱：<hao_kr@163.com>
